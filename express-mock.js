@@ -10,6 +10,7 @@ const port = process.env.PORT || 8000;
 
 const app = express();
 
+// middleware
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
@@ -47,6 +48,7 @@ app.route('/api/users/:userid').get((req, res) => {
         ...mockdata[userIdx],
         ...body
     }
+
 
     fs.writeFile('./MOCK_DATA.json', JSON.stringify(mockdata), (err, data) => {
         return res.json({ success: true, userid : id})
